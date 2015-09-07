@@ -20,9 +20,9 @@ namespace WebAppTest.Controllers
         public void EditGrade(int studentId, int subjectId, int grade)
         {
             var student = db.Students.Find(studentId);
-            if (student.SubjectsGrades.ContainsKey(subjectId))
+            if (student.SubjectsGrades.Exists(x=>x.Subject.ID==subjectId))
             {
-                student.SubjectsGrades[subjectId] = grade;
+                student.SubjectsGrades.First(x=>x.Subject.ID == subjectId).Grade = grade;
             }
             else
             {

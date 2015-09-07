@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Models\MasterDAO.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentSubject.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\WebAppTestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

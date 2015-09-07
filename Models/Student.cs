@@ -15,7 +15,7 @@ namespace WebAppTest.Models
         public double AverageGrade { get
             {
                 if (SubjectsGrades.Count == 0) return 0;
-                return SubjectsGrades.Select(x => x.Value).Average();
+                return SubjectsGrades.Select(x => x.Grade).Average();
             }
         }
         public Student()
