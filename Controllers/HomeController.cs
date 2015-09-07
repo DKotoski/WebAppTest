@@ -16,7 +16,8 @@ namespace WebAppTest.Controllers
             return View(data);
         }
 
-        public JsonResult EditGrade(int studentId, int subjectId, int grade)
+        [HttpPost]
+        public void EditGrade(int studentId, int subjectId, int grade)
         {
             var student = db.Students.Find(studentId);
             if (student.SubjectsGrades.ContainsKey(subjectId))
@@ -27,7 +28,6 @@ namespace WebAppTest.Controllers
             {
                 student.SubjectsGrades.Add(subjectId, grade);
             }
-            return Json("good");
         }
     }
 }

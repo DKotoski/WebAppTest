@@ -28,22 +28,22 @@
                 <td>@student.FullName</td>
                 @foreach(var id in subjectIDs)
                 {
-                    if (student.SubjectsGrades.ContainsKey(id))
+                    if (student.SubjectsGrades.Exists(x=>x.Subject.ID==id))
                     {
-                        <td class="editable" subId="@id" stId="@student.ID">@student.SubjectsGrades[id]</td>
+                        <td class="editable" subId="@id" stId="@student.ID">@student.SubjectsGrades.First(x=>x.Subject.ID==id).Grade</td>
                     }
                     else
                     {
                         <td class="editable" subId="@id" stId="@student.ID"></td>
                     }
                 }
-                <td>@student.AverageGrade</td>
+                <td id='average'+stId>@student.AverageGrade</td>
             </tr>
         }
     </tbody>
 </table>
 
-@section Scripts{
+@section scripts{
         <script src="~/Scripts/CellEdit.js"></script>
         <script src="~/Scripts/sortable.js"></script>
     }

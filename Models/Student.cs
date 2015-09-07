@@ -10,12 +10,17 @@ namespace WebAppTest.Models
         public int ID { get; set; }
         public string FullName { get; set; }
         public int Age { get; set; }
-        public Dictionary<int, int> SubjectsGrades{ get; set; }
+        public virtual List<StudentSubject> SubjectsGrades;
         public int NumOfSubjects { get { return SubjectsGrades.Count; } }
         public double AverageGrade { get
             {
+                if (SubjectsGrades.Count == 0) return 0;
                 return SubjectsGrades.Select(x => x.Value).Average();
             }
+        }
+        public Student()
+        {
+            SubjectsGrades = new List<StudentSubject>();
         }
     }
 }
