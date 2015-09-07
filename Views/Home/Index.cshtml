@@ -1,5 +1,44 @@
-﻿@{
+﻿@model WebAppTest.Models.MasterDAO
+@{
     ViewBag.Title = "Home Page";
+    List<int> subjectIDs = new List<int>();
+    foreach(var sub in Model.Subjects)
+    {
+        subjectIDs.Add(sub.ID);
+    }
 }
 
-<table></table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            @foreach(var subject in Model.Subjects.OrderBy(x=>x.ID))
+            {
+                <th>@subject.Name</th>
+            }
+            <th>
+                Average
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr >
+                <td>@student.FullName</td>
+                @foreach(var id in subjectIDs)
+                {
+                    if (student.SubjectsGrades.ContainsKey(id))
+                    {
+                        <td class="editable" subId="@id" stId="@student.ID">@student.SubjectsGrades[id]</td>
+                    }
+                    else
+                    {
+                        <td class="editable" subId="@id" stId="@student.ID"></td>
+                    }
+                }
+                <td>@student.AverageGrade</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppTest.Models;
 
 namespace WebAppTest.Controllers
 {
@@ -10,7 +11,8 @@ namespace WebAppTest.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var data = new MasterDAO();
+            return View(data);
         }
     }
 }
