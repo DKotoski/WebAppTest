@@ -26,7 +26,7 @@ namespace WebAppTest.Controllers
             }
             else
             {
-                student.SubjectsGrades.Add(subjectId, grade);
+                student.SubjectsGrades.Add(new StudentSubject() { Subject = db.Subjects.Find(subjectId), Grade = grade});
             }
         }
     }
